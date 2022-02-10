@@ -1,0 +1,14 @@
+version: 2.1
+
+setup: true
+
+orbs:
+  config-splitting: circle-makotom-orbs/config-splitting@0.0.1
+
+workflows:
+  setup:
+    jobs:
+      # Specify the file listing configs to be combined in `config-list-file`
+      # This job combines those listed configs, then execute the resulting config.
+      - config-splitting/run-all-modular-configs:
+          config-list-file: .circleci/modular-config-list.txt
