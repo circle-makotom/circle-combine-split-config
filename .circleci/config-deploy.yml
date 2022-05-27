@@ -18,7 +18,8 @@ jobs:
     steps:
       - run: echo "some preprod deployments - success!"
       - unless:
-          condition: [ main, << pipeline.git.branch >> ]
+          condition: 
+            equal: [ main, << pipeline.git.branch >> ]
           steps:
             - run: echo "This is my dev deployment!"
 
