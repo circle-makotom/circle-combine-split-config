@@ -4,12 +4,10 @@ jobs:
   prod-deployment:
     docker:
       - image: cimg/base:stable
+    resource_class: small
     steps:
       - run: echo "I'm going to run some deployments!"
-      - when:
-          condition: [ main, << pipeline.git.branch >> ]
-          steps:
-            - run: echo "This is my prod on main branch deployment!"
+      - run: echo "This is my prod on main branch deployment!"
       - run: echo "prod-deployment job envoked"
   
   preprod-deployment:
@@ -23,5 +21,13 @@ jobs:
 workflows:
   deployment-workflows:
     jobs:
-      - prod-deployment
-      - preprod-deployment
+    - prod-deployment:
+        filters:
+          branches:
+            only: 
+              - main
+    - preprod-deployment:
+        filters:
+          branches:
+            ignore:
+              - main
