@@ -17,11 +17,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - run: echo "some preprod deployments - success!"
-      - unless:
-          condition: 
-            equal: [ main, << pipeline.git.branch >> ]
-          steps:
-            - run: echo "This is my dev deployment!"
+      - run: echo "This is my dev deployment!"
 
 
 workflows:
