@@ -6,10 +6,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - run: echo "I'm going to run some deployments!"
-      - when:
-          condition: [ main, << pipeline.git.branch >> ]
-          steps:
-            - run: echo "This is my prod deployment!"
+      - run: echo "This is my prod deployment!"
       - run: echo "prod-deployment job envoked"
   
   preprod-deployment:
