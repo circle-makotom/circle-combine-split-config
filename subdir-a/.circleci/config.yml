@@ -8,7 +8,7 @@ jobs:
       - image: debian:unstable-slim
     steps:
       - shared-say-hello
-      - run: echo Running additional tests for subdirectory A
+      - run: echo Running additional tests for subdir A
 
 workflows:
   A-main-workflow:
