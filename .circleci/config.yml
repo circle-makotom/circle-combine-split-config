@@ -6,9 +6,24 @@ orbs:
   config-splitting: circle-makotom-orbs/config-splitting@0.0.1
 
 workflows:
-  setup:
+  setup-main-branch-configs:
     jobs:
       # Specify the file listing configs to be combined in `config-list-file`
       # This job combines those listed configs, then execute the resulting config.
       - config-splitting/run-all-modular-configs:
-          config-list-file: .circleci/modular-config-list.txt
+          config-list-file: .circleci/modular-config-list-main.txt
+          filters:
+            branches:
+              only: main
+  setup-feature-branch-configs:
+    jobs:
+      # Specify the file listing configs to be combined in `config-list-file`
+      # This job combines those listed configs, then execute the resulting config.
+      - config-splitting/run-all-modular-configs:
+          config-list-file: .circleci/modular-config-list-feature.txt
+          filters:
+            branches:
+              ignore: 
+                - main
+              only:
+                - /feature-.*/

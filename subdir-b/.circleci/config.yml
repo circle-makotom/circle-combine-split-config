@@ -12,7 +12,4 @@ jobs:
 workflows:
   B-main-workflow:
     jobs:
-      - shared-job
-      - B-test:
-          requires:
-            - shared-job
+      - B-test

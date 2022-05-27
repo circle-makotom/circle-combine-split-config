@@ -1,0 +1,13 @@
+version: 2.1
+
+jobs:
+  docker-test:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - run: echo "some docker jobs - success!"
+
+workflows:
+  docker:
+    jobs:
+      - docker-test

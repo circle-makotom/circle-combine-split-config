@@ -1,0 +1,13 @@
+version: 2.1
+
+jobs:
+  unit-test:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - run: echo "some unit tests - success!"
+
+workflows:
+  feature-branch-tests:
+    jobs:
+      - unit-test

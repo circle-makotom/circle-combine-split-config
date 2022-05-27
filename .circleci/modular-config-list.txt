@@ -1,2 +1,0 @@
-subdir-a/.circleci/config.yml
-subdir-b/.circleci/config.yml
